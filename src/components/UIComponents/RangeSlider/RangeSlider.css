@@ -1,0 +1,40 @@
+input[type='range']::-webkit-slider-thumb {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    border-radius: 50%;
+    pointer-events: auto;
+    -webkit-appearance: none;
+    background-color: #ffffff;
+}
+
+input[type='range']::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    pointer-events: auto;
+    -moz-appearance: none;
+    background-color: #ffffff;
+}
+
+p[data-tooltip='top_tooltip']::after {
+    content: '';
+    border: 12px solid transparent;
+    border-top-color: #ffffff;
+    position: absolute;
+    left: 50%;
+    bottom: 2px;
+    transform: translate(-50%, 100%);
+}
+
+p[data-tooltip='bottom_tooltip']::after {
+    content: '';
+    border: 12px solid transparent;
+    border-bottom-color: #ffffff;
+    position: absolute;
+    left: 50%;
+    top: 3px;
+    transform: translate(-50%, -100%);
+}

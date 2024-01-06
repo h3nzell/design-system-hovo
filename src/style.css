@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.checkedSpan>input[type=radio]:checked+div {
+    @apply bg-primary500;
+    @apply block;
+}
+
+.toast-container {
+    .Toastify__toast-icon {
+        width: fit-content !important;
+    }
+}
+
+.custom-disable-pointer-events>* {
+    pointer-events: none;
+}

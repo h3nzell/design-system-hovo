@@ -1,0 +1,7 @@
+.scroll::-webkit-scrollbar {
+    height: 3px;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    background-color: #FAA91A;
+}
