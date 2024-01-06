@@ -35,6 +35,7 @@ const SearchInput = forwardRef(
       inputContainerClassName,
       buttonContainerClassName,
       DropdownIcon,
+      DropdownIconColor,
       ...props
     },
     ref
@@ -101,6 +102,7 @@ const SearchInput = forwardRef(
             <Button
               size='small'
               RightIcon={DropdownIcon}
+              iconColor={DropdownIconColor}
               onClick={onCategoryButtonClick}
               className={classNames('min-w-[100px] max-w-[120px] max-h-[38px]', { [buttonContainerClassName]: buttonContainerClassName })}
             >
@@ -143,6 +145,7 @@ SearchInput.propTypes = {
   inputContainerClassName: PropTypes.string,
   buttonContainerClassName: PropTypes.string,
   DropdownIcon: PropTypes.element,
+  DropdownIconColor: PropTypes.string,
 }
 
 export default SearchInput

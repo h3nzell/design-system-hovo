@@ -10,8 +10,9 @@ import Toggle from './../FormKit/Toggle'
 import FileUpload from '../UIComponents/FileUpload/FileUpload'
 import Avatar from './../UIComponents/Avatar'
 import SearchIcons from './../Basic/Icons/Search'
-import SearchInput from './../UIComponents/SearchInput'
+// import SearchInput from './../UIComponents/SearchInput'
 import EssentialIcons from '../Basic/Icons/Essentials'
+import SearchInput from '../UIComponents/SearchInput'
 
 const ModalFormTest = () => {
   const [open, setOpen] = useState(false)
