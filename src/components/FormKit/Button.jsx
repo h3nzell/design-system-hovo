@@ -51,7 +51,7 @@ const Button = ({ variant, type, disabled, size, children, RightIcon, LeftIcon, 
       {LeftIcon && <LeftIcon color={configIconColor} size={configIconSize[size]} />}
       {isRestricted && children.length > 6 ? `${children.substring(0, 6)}...` : children}
       {loading ? (
-        <ArrowIcons.ArrowLoading size={configIconSize[size]} color={configIconColor} className='animate-spin' />
+        <ArrowIcons.Refresh2 size={configIconSize[size]} color={configIconColor} className='animate-spin flex items-center justify-center' />
       ) : (
         RightIcon && <RightIcon color={configIconColor} size={configIconSize[size]} />
       )}

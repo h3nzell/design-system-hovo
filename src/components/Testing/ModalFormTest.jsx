@@ -16,6 +16,8 @@ import SearchInput from '../UIComponents/SearchInput'
 
 const ModalFormTest = () => {
   const [open, setOpen] = useState(false)
+  const [open2, setOpen2] = useState(false)
+
   const [formValue, setFormValue] = useState({
     firstName: '',
     lastName: '',
@@ -50,13 +52,13 @@ const ModalFormTest = () => {
   }
 
   return (
-    <>
+    <div className='h-[1200px]'>
       <Button onClick={() => setOpen(prev => !prev)} className='!w-full text-center'>
         Open Modal
         <ArrowIcons.ArrangeCircle />
       </Button>
-      <Modal onCancelHandler={() => setOpen(false)} open={open}>
-        <Input name='firstName' value={formValue.firstName} onChange={onFormInputChange} placeholder='Enter First Name' RightIcon={<ArrowIcons.Arrow2 color='gray' size={20} />} />
+      <Modal onCancelHandler={() => setOpen(false)} open={open} containerClassName={'!min-w-[300px]'}>
+        <Input name='firstName' value={formValue.firstName} onChange={onFormInputChange} placeholder='Enter First Name' LeftIcon={<ArrowIcons.Arrow2 color='red' size={20} />} />
         <form onSubmit={onSubmitHandler}>
           {/* <Input name='lastName' value={formValue.lastName} onChange={onFormInputChange} placeholder='Enter Last Name' />
           <Input name='lastName' value={formValue.lastName} type='password' onChange={onFormInputChange} placeholder='Enter Last Name' /> */}
@@ -93,6 +95,12 @@ const ModalFormTest = () => {
             onChange={(_, value) => setFormValue(prev => ({ ...prev, isInvited: value }))}
           />
           <SearchInput {...propSearch} categoryValue='vgbhnj' />
+          <Button onClick={() => setOpen2(prev => !prev)} className='!w-full text-center'>
+            Open Modal 2
+          </Button>
+          <Modal open={open2} onCancelHandler={() => setOpen2(!open2)} containerClassName='!min-w-[400px] !min-h-max'>
+              <p>text</p>
+          </Modal>
           <FileUpload
             maxSize={100}
             filesPreview={formValue.filesPreview}
@@ -105,7 +113,7 @@ const ModalFormTest = () => {
           <Button>Submit</Button>
         </form>
       </Modal>
-    </>
+    </div>
   )
 }
 

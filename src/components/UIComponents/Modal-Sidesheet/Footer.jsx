@@ -11,11 +11,13 @@ const Footer = ({
   primaryButtonContent,
   secondaryButtonContent,
   cancelButtonContent,
+  disableDivider
 }) => (
   <div
-    className={classNames('border-t-2 px-6 py-5 max-h-[88px] overflow-hidden flex items-center', {
+    className={classNames('px-6 py-5 max-h-[88px] overflow-hidden flex items-center', {
       ['justify-end']: hideFooterCancelButton,
       ['justify-between']: !hideFooterCancelButton,
+      ['border-t-2 ']: !disableDivider
     })}
   >
     {!hideFooterCancelButton && (
@@ -48,6 +50,7 @@ Footer.propTypes = {
   primaryButtonContent: PropTypes.string,
   secondaryButtonContent: PropTypes.string,
   cancelButtonContent: PropTypes.string,
+  disableDivider: PropTypes.bool
 }
 
 export default Footer

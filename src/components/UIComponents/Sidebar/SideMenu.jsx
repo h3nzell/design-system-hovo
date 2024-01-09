@@ -32,7 +32,10 @@ const SideMenu = ({ sideMenuItems = [], isAuth = false, isMobile, handleLogout, 
               <SidebarNavItem
                 key={element.id}
                 id={element.id}
-                onClick={() => onSideMenuItemClick(element.id)}
+                onClick={() => {
+                  onSideMenuItemClick(element.id)
+                  element.onMenuClick?.()
+                }}
                 className={isMobile && mobileNavItem}
                 Icon={element.Icon}
                 badge={element.badge}
@@ -47,6 +50,7 @@ const SideMenu = ({ sideMenuItems = [], isAuth = false, isMobile, handleLogout, 
               <SidebarNavItem
                 key={element.id}
                 id={element.id}
+                onSubMenuItemClick={element.onSubMenuItemClick}
                 onClick={() => onSideMenuItemClick(element.id)}
                 className={isMobile && mobileNavItem}
                 Icon={element.Icon}
@@ -104,6 +108,7 @@ SideMenu.propTypes = {
         id: PropTypes.number.isRequired,
         Icon: PropTypes.elementType,
         badge: PropTypes.string,
+        onMenuClick: PropTypes.func,
         label: PropTypes.string.isRequired,
         submenuItems: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.number, label: PropTypes.string })),
       }),

@@ -3,6 +3,7 @@ import className from 'classnames'
 import PropTypes from 'prop-types'
 import Icons from './../Basic/Icons/Icons'
 import SecurityIcons from './../Basic/Icons/Security'
+import classNames from 'classnames'
 
 const Input = forwardRef(
   (
@@ -25,6 +26,7 @@ const Input = forwardRef(
       autoComplete,
       placeholder,
       IconColor,
+      className,
       containerClassName,
       ...props
     },
@@ -59,11 +61,12 @@ const Input = forwardRef(
     const InputContent = (
       <>
         <input
-          className={className(
+          className={classNames(
             'transition-all outline-none -ml-1 w-full rounded-2xl p-[12px] border-2 border-opacity-20 border-gray400 font-normal focus:border-primary100 focus:focus:shadow-[0.0px_0.0px_1.0px_2.0px_#FEEED1] disabled:bg-gray100 disabled:border-gray100 disabled:placeholder-gray300 disabled:placeholder-opacity-80 disabled:cursor-not-allowed disabled:text-slate-400',
             {
               ['pl-[38px]']: LeftIcon,
               ['!border-error400 border-opacity-100 focus:!shadow-[0.0px_0.0px_1.0px_2.0px_#F97066]']: error,
+              [className]: className
             }
           )}
           ref={ref}
@@ -88,7 +91,7 @@ const Input = forwardRef(
             color={'#717BBC'}
             Icon={isHide ? SecurityIcons.EyeSlash : SecurityIcons.Eye}
             size={20}
-            className={className('cursor-pointer absolute bottom-[50%] translate-y-1/2 right-[16px]', {
+            className={classNames('cursor-pointer absolute bottom-[50%] translate-y-1/2 right-[16px]', {
               ['cursor-not-allowed']: disabled,
             })}
           />
@@ -97,14 +100,14 @@ const Input = forwardRef(
     )
 
     return (
-      <div className={className('flex flex-col gap-[10px] w-fit', { [containerClassName]: containerClassName })}>
+      <div className={classNames('flex flex-col gap-[10px] w-fit', { [containerClassName]: containerClassName })}>
         <label className='flex flex-col justify-start gap-[12px] w-full font-semibold text-base'>
           {label}
           {RightIcon || LeftIcon || isPasswordType ? <div className='relative w-full'>{InputContent}</div> : <>{InputContent}</>}
         </label>
         {(error || hint) && (
           <span
-            className={className('text-xs text-gray500 font-normal', {
+            className={classNames('text-xs text-gray500 font-normal', {
               ['text-error500']: error,
             })}
           >
@@ -147,6 +150,7 @@ Input.propTypes = {
   containerClassName: PropTypes.string,
   autoComplete: PropTypes.oneOf(['off', 'on']),
   type: PropTypes.oneOf(['text', 'password']),
+  className: PropTypes.string
 }
 
 export default Input

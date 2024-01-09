@@ -30,11 +30,12 @@ const sideMenuItems = [
       {
         id: 2,
         label: 'Sidenav Item',
+        onMenuClick: () => console.log("es el itemy"),
         Icon: Discover,
         submenuItems: [
-          { id: 10, label: 'Search Jobs' },
-          { id: 11, label: 'Applications' },
-          { id: 12, label: 'Saved Jobs' },
+          { id: 10, label: 'Search Jobs', onSubMenuItemClick: () => console.log("subMenuItem click") },
+          { id: 11, label: 'Applications',  onSubMenuItemClick: () => console.log("subMenuItem click") },
+          { id: 12, label: 'Saved Jobs', onSubMenuItemClick: () => console.log("subMenuItem click") },
         ],
       },
       { id: 3, label: 'Messages', Icon: Message, badge: '17' },

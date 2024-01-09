@@ -7,7 +7,7 @@ import Footer from './Footer'
 import useOutsideClick from '../../../hooks/useOutsideClick'
 import Typography from './../../Basic/Typography'
 
-const Sidesheet = ({ open, title, children, onCancelHandler, hideFooterCancelButton, onBackButtonHandler, onPrimaryActionHandler, onSecondaryActionHandler }) => {
+const Sidesheet = ({ open, title, children,titleClassName, onCancelHandler, hideFooterCancelButton, onBackButtonHandler, onPrimaryActionHandler, onSecondaryActionHandler }) => {
   const ref = useRef(null)
 
   const [animationOpenEnd, setAnimationOpenEnd] = useState(open)
@@ -37,7 +37,7 @@ const Sidesheet = ({ open, title, children, onCancelHandler, hideFooterCancelBut
             ['fixed right-0']: open,
           })}
         >
-          <Header onBackButtonHandler={onBackButtonHandler} onCancelHandler={onCancelHandler} title={title} />
+          <Header onBackButtonHandler={onBackButtonHandler} onCancelHandler={onCancelHandler} title={title} titleClassName={titleClassName} />
           {animationOpenEnd && (
             <div className='p-6 flex-grow-[3]'>
               {children ? (
@@ -61,6 +61,10 @@ const Sidesheet = ({ open, title, children, onCancelHandler, hideFooterCancelBut
   )
 }
 
+Sidesheet.defaultProps = {
+  title: 'Sidesheet Title'
+}
+
 Sidesheet.propTypes = {
   open: PropTypes.bool,
   title: PropTypes.string,
@@ -69,6 +73,7 @@ Sidesheet.propTypes = {
   onPrimaryActionHandler: PropTypes.func,
   onSecondaryActionHandler: PropTypes.func,
   hideFooterCancelButton: PropTypes.bool,
+  titleClassName: PropTypes.string,
   onBackButtonHandler: PropTypes.func,
 }
 

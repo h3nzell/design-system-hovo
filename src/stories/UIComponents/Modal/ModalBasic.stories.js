@@ -62,3 +62,53 @@ ModalCustomContent.args = {
     </div>
   ),
 }
+
+
+export const ModalFullFooterWithoutDivider = args => <Modal {...args} />
+ModalFullFooterWithoutDivider.args = {
+  open: true,
+  disableDivider: true,
+  title: 'Submit a Proposal',
+  onPrimaryActionHandler: () => alert('Primary Action Handler'),
+  onSecondaryActionHandler: () => alert('Secondary Action Handler'),
+}
+
+export const ModalCancelHideWithoutDivider = args => <Modal {...args} />
+ModalCancelHideWithoutDivider.args = {
+  open: true,
+  disableDivider: true,
+  title: 'Submit a Proposal',
+  hideFooterCancelButton: true,
+  onPrimaryActionHandler: () => alert('Primary Action Handler'),
+  onSecondaryActionHandler: () => alert('Secondary Action Handler'),
+}
+
+export const ModalSecondaryHideWithoutDivider = args => <Modal {...args} />
+ModalSecondaryHideWithoutDivider.args = {
+  open: true,
+  disableDivider: true,
+  title: 'Submit a Proposal',
+  onSecondaryActionHandler: null,
+  onPrimaryActionHandler: () => alert('Primary Action Handler'),
+}
+
+export const ModalFullHideWithoutDivider = args => <Modal {...args} />
+ModalFullHideWithoutDivider.args = {
+  open: true,
+  disableDivider: true,
+  title: 'Submit a Proposal',
+  hideFooterCancelButton: true,
+  onSecondaryActionHandler: null,
+}
+
+export const ModalCustomContentWithoutDivider = args => <Modal {...args} />
+ModalCustomContentWithoutDivider.args = {
+  open: true,
+  disableDivider: true,
+  title: 'Submit a Proposal',
+  children: (
+    <div className='min-h-[200px] flex justify-center items-center'>
+      <p>Custom Content</p>
+    </div>
+  ),
+}

@@ -6,12 +6,11 @@ import classNames from 'classnames'
 import Typography from '../../Basic/Typography'
 import ArrowIcons from '../../Basic/Icons/Arrow'
 
-const SidebarNavItem = ({ id, selected, badge, label, Icon, onClick, submenuItems = [], onSubMenuItemClick, className }) => {
+const SidebarNavItem = ({ id, selected, badge, label, Icon, onClick, submenuItems = [], className }) => {
   const [activeItem, setActiveItem] = useState(submenuItems[0]?.id ?? 0)
 
   const handleSubMenuItemCLick = id => {
     setActiveItem(id)
-    onSubMenuItemClick?.(id)
   }
 
   const renderRightSideContent = () => {
@@ -40,14 +39,17 @@ const SidebarNavItem = ({ id, selected, badge, label, Icon, onClick, submenuItem
         {renderRightSideContent()}
       </div>
       <div style={{ height: submenuItems.length && selected === id ? `${submenuItems.length * 34}px` : 0 }} className={`flex flex-col duration-500 ease-out overflow-hidden`}>
-        {submenuItems?.map(({ label, id }) => (
+        {submenuItems?.map(element => (
           <Typography
-            key={id}
-            onClick={() => handleSubMenuItemCLick(id)}
-            className={`${id === activeItem ? 'text-primary500' : 'text-gray400'}  w-full py-2 px-14 cursor-pointer `}
+            key={element.id}
+            onClick={() => {
+              handleSubMenuItemCLick(element.id)
+              element.onSubMenuItemClick?.()
+            }}
+            className={`${element.id === activeItem ? 'text-primary500' : 'text-gray400'}  w-full py-2 px-14 cursor-pointer `}
             size='sm'
             weight='medium'
-            text={label}
+            text={element.label}
           />
         ))}
       </div>
@@ -62,7 +64,7 @@ SidebarNavItem.propTypes = {
   Icon: PropTypes.elementType,
   id: PropTypes.number.isRequired,
   label: PropTypes.string.isRequired,
-  submenuItems: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.number, label: PropTypes.string })),
+  submenuItems: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.number, label: PropTypes.string, onSubMenuItemClick: PropTypes.func })),
 }
 
 SidebarNavItem.defaultProps = {
